@@ -1,0 +1,134 @@
+---
+date: 2017-03-23 09:06
+status: public
+title: CSS3
+---
+
+# 选择器
+##后代级别
+* nth-child(n):选择当前元素在父元素中要作为子元素出现，他是第几个孩子。
+* first-child:作为第一个子元素出现  
+* last-child：作为最后一个子元素出现
+* nth-last-child(n)：从后往前计数
+* only-child：作为独生子出现
+##同辈元素
+* :nth-of-type(n):作为同辈元素中的第n个（不在乎其他元素）
+* :nth-last-of-type(n):从后往前计数
+* :first-of-type:作为第一个兄弟元素出现
+* :last-of-type:作为最后的兄弟出现
+##伪类
+* :hover:鼠标移入
+* :after:一个元素的后面的部分
+* :before:一个元素的前面的部分
+* :first-letter:元素的第一个文字
+* :first-line:元素的第一行文字
+* :focus:获得焦点
+* ::selection:浏览器选中文字的样式
+* :root:根元素
+##属性选择器
+- [attr]:包含某个属性
+- [attr=val]:具有有指定值的属性
+- [attr*=val]:包含有指定值的一部分属性
+- [attr^=val]:属性的值的开头和指定的值一样的元素
+- [attr&=val]:属性的值的结尾和指定的值一样的元素
+
+#边框模型
+##圆角
+* border-radius:圆角的半径（%,px,em,rem,vm）;左上，右上，右下，左下（顺时针）
+
+##阴影
+* box-shadow:x y blur color [inset]
+x:阴影在x轴的偏移量
+y:阴影在y轴的偏移量
+blur:阴影的模糊程度
+color:颜色
+[inset]:内阴影
+
+##图片边框
+* border-image-source:url() 图片的路径
+* border-imahe-width:图片边框的宽度
+* border-image-slice:在原图裁切的比例
+* border-image-offset:图片边框的偏移量
+
+##字体图标实现步骤
+1、创建文字
+* 利用svg制作矢量图如（借助矢量软件 AI）
+* 将svg格式的图片生成字体
+     - 可以借助阿里巴巴平台，在线转换
+     - 可以自己下载字体生成器，本地转换
+     - 字体格式  ttf   woff
+ 
+2、将创建的字体引入到css页面中
+@font-face{用这个新的特性可以引入字体
+      font-family:指定字体的名字
+      src=url()载入路径
+      }
+      
+3、将指定的元素制定相应的字体
+* 知道指定的字体对应的代码
+css代码
+div{
+font-family:制定的字体
+}
+html代码
+<div>指定的代码</div>
+*不知道指定的字体对应的代码是什么
+css代码
+.one:before{
+content:指定的代码
+}
+html代码
+<div class="one"></div>
+
+##过渡
+* transition:属性,时间,[运动方式],[等待时间];
+-时间单位：s/ms
+
+##2d转换
+* transform:
+      -matrix(a,b,c,d,e,f);
+      -translate(x,y);
+      -translateX();
+      -translateY();
+      -scale(x,y);
+      -scaleX();
+      -scaleY();
+* transform-origin:x  y;   基准点的x坐标
+
+##3d转换
+* transform:
+    - matrix3d(1,2,3,4......16);
+    - http://www/jianshu.com/p/52e0018e6ce2
+    -translate3d(x,y,z)
+    -scale3d(x,y,z)
+    -ratate3d(x,y,z,angle)
+    
+* transform-origin:x y z;   变换的基准轴
+* perspective  透视
+* perspective-origin  灭点的位置
+* transform-style   变换的风格
+  - presever-3d  子元素保留3d的状态
+* backface-visiblity:visible  可见/hidden  背面不可见
+
+##颜色透明度
+* background:rgba();
+* hsl
+* hsla
+
+##线性渐变
+* background:linear-gradient([角度，]color color-stop,color color-stop,color color-stop);
+     - 角度：移180为默认值
+     
+##径向渐变
+* background:radial-gradient([形状] [半径] at [x,y],color color-stop)
+    - 形状：[circle/ellipse]
+    - 半径：渐变的作用区间
+    - x y:渐变中心点的位置
+    - color:颜色
+    - color-stop:颜色停靠的位置
+    
+##背景模块
+* background-image:img1,img2   可设置多个背景
+* backgorund-image-size:[cover\contain\px\%]   设置背景的尺寸
+* background-image-origin:[border-box\padding-box\content-box]   设置背景填充的原点
+* background-image-clip:[border-box\padding-box\content-box]     设置背景裁切的区域
